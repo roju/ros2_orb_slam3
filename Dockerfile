@@ -6,18 +6,28 @@ WORKDIR /home
 
 RUN git clone -b v0.8 https://github.com/stevenlovegrove/Pangolin
 
-WORKDIR /home/Pangolin
-
 # Install dependencies
-RUN apt update && apt install -y \
+RUN apt-get update && apt-get install -y \
     python3-pip \
     ros-humble-cv-bridge \
     ros-humble-image-transport-plugins \
     libboost-all-dev \
+    libgl1-mesa-dev \
+    libwayland-dev \
+    libxkbcommon-dev \
+    wayland-protocols \
+    libegl1-mesa-dev \
+    libc++-dev \
+    libglew-dev \
+    libeigen3-dev \
+    cmake \
+    g++ \
+    ninja-build \
     && pip install opencv-python \
-    && ./scripts/install_prerequisites.sh recommended \
-    && apt clean \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /home/Pangolin
 
 # Build and install Pangolin system-wide
 RUN cmake -B build \
