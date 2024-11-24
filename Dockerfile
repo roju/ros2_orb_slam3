@@ -1,5 +1,7 @@
 FROM ros:humble-ros-base
 
+SHELL ["/bin/bash", "-c"]
+
 WORKDIR /home
 
 RUN git clone -b v0.8 https://github.com/stevenlovegrove/Pangolin
