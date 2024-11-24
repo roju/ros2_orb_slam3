@@ -30,7 +30,7 @@ WORKDIR /root/ros2_test
 RUN export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/lib/local \
     && ldconfig \
     && echo -e 'if [[ ":$LD_LIBRARY_PATH:" != *":/usr/local/lib:"* ]]; then\n    export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH\nfi' >> /root/.bashrc \
-    && source /root/.bashrc
+    && source /root/.bashrc \
     && python3 -c "import cv2; print(cv2.__version__)" \
     && source /opt/ros/humble/setup.bash \
     && colcon build --symlink-install
